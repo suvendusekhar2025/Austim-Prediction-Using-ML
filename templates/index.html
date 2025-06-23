@@ -11,9 +11,9 @@
                         <div class="form-grid-item">
                             <label class="form-label">{{ feat.replace('_', ' ').title() }}</label>
                             <select class="form-select" name="{{ feat }}" required>
-                                <option value="" disabled selected>Select...</option>
-                                <option value="1">1</option>
-                                <option value="0">0</option>
+                                <option value="" disabled {% if not request.form.get(feat) %}selected{% endif %}>Select...</option>
+                                <option value="1" {% if request.form.get(feat) == '1' %}selected{% endif %}>1</option>
+                                <option value="0" {% if request.form.get(feat) == '0' %}selected{% endif %}>0</option>
                             </select>
                         </div>
                     {% endfor %}
@@ -27,15 +27,15 @@
                             <label class="form-label">{{ feat.replace('_', ' ').title() }}</label>
                             {% if feat in select_options %}
                                 <select class="form-select" name="{{ feat }}" required>
-                                    <option value="" disabled selected>Select...</option>
+                                    <option value="" disabled {% if not request.form.get(feat) %}selected{% endif %}>Select...</option>
                                     {% for opt in select_options[feat] %}
-                                        <option value="{{ opt }}">{{ opt }}</option>
+                                        <option value="{{ opt }}" {% if request.form.get(feat) == opt %}selected{% endif %}>{{ opt }}</option>
                                     {% endfor %}
                                 </select>
                             {% elif feat == 'age' %}
-                                <input type="number" class="form-control" name="age" min="1" max="100" step="1" required>
+                                <input type="number" class="form-control" name="age" min="1" max="100" step="1" required value="{{ request.form.get('age', '') }}">
                             {% else %}
-                                <input type="text" class="form-control" name="{{ feat }}" required>
+                                <input type="text" class="form-control" name="{{ feat }}" required value="{{ request.form.get(feat, '') }}">
                             {% endif %}
                         </div>
                     {% endfor %}
@@ -49,15 +49,15 @@
                             <label class="form-label">{{ feat.replace('_', ' ').title() }}</label>
                             {% if feat in select_options %}
                                 <select class="form-select" name="{{ feat }}" required>
-                                    <option value="" disabled selected>Select...</option>
+                                    <option value="" disabled {% if not request.form.get(feat) %}selected{% endif %}>Select...</option>
                                     {% for opt in select_options[feat] %}
-                                        <option value="{{ opt }}">{{ opt }}</option>
+                                        <option value="{{ opt }}" {% if request.form.get(feat) == opt %}selected{% endif %}>{{ opt }}</option>
                                     {% endfor %}
                                 </select>
                             {% elif feat == 'result' %}
-                                <input type="number" class="form-control" name="result" step="any" required>
+                                <input type="number" class="form-control" name="result" step="any" required value="{{ request.form.get('result', '') }}">
                             {% else %}
-                                <input type="text" class="form-control" name="{{ feat }}" required>
+                                <input type="text" class="form-control" name="{{ feat }}" required value="{{ request.form.get(feat, '') }}">
                             {% endif %}
                         </div>
                     {% endfor %}

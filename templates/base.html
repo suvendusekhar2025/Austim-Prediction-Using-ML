@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autism Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <!-- Puzzle piece SVG logo for autism awareness -->
+            <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="puzzle-gradient" x1="0" y1="0" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#6366f1"/>
+                        <stop offset="1" stop-color="#3b82f6"/>
+                    </linearGradient>
+                </defs>
+                <rect width="38" height="38" rx="10" fill="url(#puzzle-gradient)"/>
+                <path d="M19 8a3 3 0 0 1 3 3v1h2.5A2.5 2.5 0 0 1 27 14.5c0 1.38-1.12 2.5-2.5 2.5H22v2h1.5A2.5 2.5 0 0 1 26 21.5c0 1.38-1.12 2.5-2.5 2.5H22v1a3 3 0 0 1-6 0v-1h-1.5A2.5 2.5 0 0 1 10 21.5c0-1.38 1.12-2.5 2.5-2.5H14v-2h-1.5A2.5 2.5 0 0 1 10 14.5C10 13.12 11.12 12 12.5 12H14v-1a3 3 0 0 1 3-3Z" fill="#fff"/>
+            </svg>
+            <span class="navbar-title">Autism Predictor</span>
+        </div>
+    </nav>
+    <div class="main-layout">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="/about" class="{% if request.path == '/about' %}active{% endif %}">About Autism & Us</a></li>
+                <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Autism Prediction</a></li>
+            </ul>
+        </aside>
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="about-section">
+    <div class="about-block autism-info">
+        <h2>About Autism</h2>
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Autism Awareness" class="about-img">
+        <p><strong>Autism Spectrum Disorder (ASD)</strong> is a developmental condition that affects how a person communicates, interacts, and experiences the world. It is called a <b>spectrum</b> because it includes a wide range of strengths, challenges, and needs. Autism is not an illness, but a different way of experiencing the world. Many people with autism have unique talents and perspectives that enrich our communities. Acceptance and support make a big difference.</p>
+        <ul class="about-list">
+            <li>Autism can affect social interaction, communication, and behavior.</li>
+            <li>It is called a spectrum because every person with autism is different and may have a unique combination of strengths and challenges.</li>
+            <li>There is no single known cause of autism; it is believed to be influenced by genetic and environmental factors.</li>
+            <li>Many people with autism have strong attention to detail, exceptional memory, or special skills in certain areas.</li>
+            <li>Early intervention, understanding, and acceptance can help people with autism thrive.</li>
+            <li>Supportive therapies, education, and inclusive environments can greatly improve quality of life for individuals with autism.</li>
+            <li>Autism is a lifelong condition, but many individuals can live independently with the right support and accommodations.</li>
+            <li>Autism affects about 1 in 100 children worldwide, but awareness and support are growing every year.</li>
+            <li>Increased public awareness and scientific research are leading to better diagnostic tools and personalized interventions.</li>
+        </ul>
+    </div>
+    <div class="about-block about-us">
+        <h2>About Us</h2>
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Our Team" class="about-img">
+        <p><strong>Autism Predictor</strong> is a website designed to help raise awareness and support early detection of Autism Spectrum Disorder (ASD) using modern technology. Our goal is to make autism screening more accessible and to empower families, educators, and healthcare professionals with easy-to-use tools. We use machine learning to provide a quick, informative prediction based on user input. This tool is for informational purposes only and should not replace professional advice.</p>
+        <h3>Input Features Description</h3>
+        <ul>
+            <li><b>A1_Score to A10_Score:</b> Binary responses (0 or 1) to 10 screening questions that evaluate behaviors and traits commonly associated with autism spectrum disorders.</li>
+            <li><b>age:</b> Age of the individual, recorded in years.</li>
+            <li><b>gender:</b> Gender of the individual (e.g., 'm' for male, 'f' for female).</li>
+            <li><b>ethnicity:</b> Ethnic background of the individual (e.g., 'White-European', 'Asian', etc.).</li>
+            <li><b>jaundice:</b> Indicates whether the individual experienced jaundice at birth ('yes' or 'no').</li>
+            <li><b>austim:</b> Indicates whether any family member has been diagnosed with autism ('yes' or 'no').</li>
+            <li><b>contry_of_res:</b> The country where the individual currently resides.</li>
+            <li><b>used_app_before:</b> Shows whether the individual has previously used an autism screening application ('yes' or 'no').</li>
+            <li><b>result:</b> Numerical score obtained from the autism screening assessment.</li>
+            <li><b>relation:</b> The relationship of the respondent to the individual being assessed (e.g., 'Self', 'Parent', 'Relative').</li>
+        </ul>
+    </div>
+</div>
+{% endblock %} 

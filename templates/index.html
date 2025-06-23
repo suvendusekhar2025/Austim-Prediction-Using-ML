@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="prediction-section">
+    <div class="prediction-card">
+        <h2>Autism Prediction</h2>
+        <form method="POST" id="prediction-form">
+            <div class="form-section">
+                <h3>Screening Questions</h3>
+                <div class="form-grid">
+                    {% for feat in features if feat.startswith('A') and 'Score' in feat %}
+                        <div class="form-grid-item">
+                            <label class="form-label">{{ feat.replace('_', ' ').title() }}</label>
+                            <select class="form-select" name="{{ feat }}" required>
+                                <option value="" disabled selected>Select...</option>
+                                <option value="1">1</option>
+                                <option value="0">0</option>
+                            </select>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="form-section">
+                <h3>Personal Information</h3>
+                <div class="form-grid">
+                    {% for feat in ['age', 'gender', 'ethnicity', 'jaundice', 'austim', 'contry_of_res', 'used_app_before'] %}
+                        <div class="form-grid-item">
+                            <label class="form-label">{{ feat.replace('_', ' ').title() }}</label>
+                            {% if feat in select_options %}
+                                <select class="form-select" name="{{ feat }}" required>
+                                    <option value="" disabled selected>Select...</option>
+                                    {% for opt in select_options[feat] %}
+                                        <option value="{{ opt }}">{{ opt }}</option>
+                                    {% endfor %}
+                                </select>
+                            {% elif feat == 'age' %}
+                                <input type="number" class="form-control" name="age" min="1" max="100" step="1" required>
+                            {% else %}
+                                <input type="text" class="form-control" name="{{ feat }}" required>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="form-section">
+                <h3>Screening Result</h3>
+                <div class="form-grid">
+                    {% for feat in ['result', 'relation'] %}
+                        <div class="form-grid-item">
+                            <label class="form-label">{{ feat.replace('_', ' ').title() }}</label>
+                            {% if feat in select_options %}
+                                <select class="form-select" name="{{ feat }}" required>
+                                    <option value="" disabled selected>Select...</option>
+                                    {% for opt in select_options[feat] %}
+                                        <option value="{{ opt }}">{{ opt }}</option>
+                                    {% endfor %}
+                                </select>
+                            {% elif feat == 'result' %}
+                                <input type="number" class="form-control" name="result" step="any" required>
+                            {% else %}
+                                <input type="text" class="form-control" name="{{ feat }}" required>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4" id="predict-btn">Predict</button>
+        </form>
+        {% if prediction %}
+            <a id="prediction-output"></a>
+            <div class="output-section {{ 'output-green' if prediction == 'Autism Risk' else 'output-red' }}">
+                {{ prediction }}
+            </div>
+            <script>
+                window.onload = function() {
+                    var output = document.getElementById('prediction-output');
+                    if (output) {
+                        output.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                };
+            </script>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 

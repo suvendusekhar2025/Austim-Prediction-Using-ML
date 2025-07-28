@@ -1,4 +1,4 @@
-# Austim-Prediction-Using-ML
+# Autism-Prediction-Using-ML
 
 Here is a detailed explanation based on your uploaded notebook **"Autism Prediction Using Machine Learning"**:
 
